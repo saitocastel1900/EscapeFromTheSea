@@ -23,7 +23,7 @@ jobs:
           # ref: https://docs.unity3d.com/ScriptReference/BuildTarget.html
           targetPlatform: WebGL
 
-          unityVersion: 2021.3.10f1
+          unityVersion: 2021.3.14f1
       # Builder で出力した WebGL ビルドを GitHub Pages にデプロイする
       - name: Deploy to GitHub Pages
         uses: JamesIves/github-pages-deploy-action@4.1.3
