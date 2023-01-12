@@ -1,6 +1,6 @@
 name: Run the WebGL build
 on:
-  pull_request: {}
+  workflow_dispatch: {}
 jobs:
   build:
     name: Run the WebGL build
