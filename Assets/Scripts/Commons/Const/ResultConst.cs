@@ -5,7 +5,7 @@ namespace Commons.Const
     /// <summary>
     /// 
     /// </summary>
-    public static class ResultConst
+    public static class DescriptionConst
     {
         public static int InitializeSlideNum = 0;
         

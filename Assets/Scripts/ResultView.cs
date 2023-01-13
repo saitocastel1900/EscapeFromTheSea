@@ -1,6 +1,3 @@
-using System;
-using System.Collections.Generic;
-using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,30 +5,22 @@ namespace Result
 {
     public class ResultView : MonoBehaviour
     {
-        [SerializeField] private List<Sprite> _slideSprites;
-        [SerializeField] private Image _slideImage;
-
-        [SerializeField] private Button _nextButton;
-        [SerializeField] private Button _backButton;
-
+        [SerializeField] private Image _resultImage;
+        
+        [SerializeField] private Sprite _gameOverSprite;
+        [SerializeField] private Sprite _gameClearSprite;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void Initialize()
         {
-           
+            SetResult(false);
         }
 
-        public IObservable<Unit> OnClickNextButton()
+        public void SetResult(bool isClear)
         {
-            return _nextButton.OnClickAsObservable();
-        }
-        
-        public IObservable<Unit> OnClickBackButton()
-        {
-            return _backButton.OnClickAsObservable();
-        }
-
-        public void SetSlide(int slideNum)
-        {
-            _slideImage.sprite = _slideSprites[slideNum];
+            _resultImage.sprite = isClear ? _gameClearSprite : _gameOverSprite;
         }
     }
 }
