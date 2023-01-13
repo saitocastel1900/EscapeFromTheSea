@@ -16,7 +16,11 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: ff590f67f293e884099618f10032637e
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: d6212c30010b773448a7be07940dfefb
+    m_Address: Assets/Scenes/ResultScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 985a4e89f8bf2b448a4022618ed09d6c, type: 2}
   m_SchemaSet:
