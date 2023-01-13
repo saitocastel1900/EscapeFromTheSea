@@ -49,7 +49,7 @@ jobs:
                   "text": {
                     "type": "mrkdwn",
                     "text": "🔧 ビルド結果: ${{ job.status }}\n\n${{ github.event.pull_request.html_url || github.event.head_commit.url }}",
-                    "Text": "Let's Play!🎮: https://saitore2024.com/EscapeFromTheSea/WebGL/WebGL/"
+                    "text": "Let's Play!🎮: https://saitore2024.com/EscapeFromTheSea/WebGL/WebGL/"
                   }
                 },
                 {
