@@ -40,7 +40,7 @@ namespace InGame
             _model.Initialized();
             _player.Initialized();
             _gauge.Initialized();
-            _ripCurrent.Initialized();
+         //   _ripCurrent.Initialized();
             _score.Initialized();
         }
 
@@ -48,7 +48,7 @@ namespace InGame
         {
             _player.Bind();
             
-            _ripCurrent.OnCollisionEnter();
+           // _ripCurrent.OnCollisionEnter();
 
             _gauge.Bind();
             
