@@ -1,37 +1,76 @@
 using System;
-using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Result
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class ResultView : MonoBehaviour
     {
-        [SerializeField] private List<Sprite> _slideSprites;
-        [SerializeField] private Image _slideImage;
+        [SerializeField] private Image _resultImage;
+        
+        [SerializeField] private Sprite _gameOverSprite;
+        [SerializeField] private Sprite _gameClearSprite;
 
-        [SerializeField] private Button _nextButton;
-        [SerializeField] private Button _backButton;
-
+        [SerializeField] private Button _titleButton;
+        [SerializeField] private Button _playButton;
+        [SerializeField] private Button _descriptionButton;
+        [SerializeField] private Button _closeButton;
+        
+        /// <summary>
+        /// 
+        /// </summary>
         public void Initialize()
         {
-           
+            SetResult(false);
         }
 
-        public IObservable<Unit> OnClickNextButton()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IObservable<Unit> OnClickTitleButton()
         {
-            return _nextButton.OnClickAsObservable();
+            return _titleButton.OnClickAsObservable();
         }
         
-        public IObservable<Unit> OnClickBackButton()
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IObservable<Unit> OnClickPlayButton()
         {
-            return _backButton.OnClickAsObservable();
+            return _playButton.OnClickAsObservable();
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IObservable<Unit> OnClickDescriptionButton()
+        {
+            return _descriptionButton.OnClickAsObservable();
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public IObservable<Unit> OnClickCloseButton()
+        {
+            return _closeButton.OnClickAsObservable();
         }
 
-        public void SetSlide(int slideNum)
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="isClear"></param>
+        public void SetResult(bool isClear)
         {
-            _slideImage.sprite = _slideSprites[slideNum];
+            _resultImage.sprite = isClear ? _gameClearSprite : _gameOverSprite;
         }
     }
 }
