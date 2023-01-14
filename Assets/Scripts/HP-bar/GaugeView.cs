@@ -1,4 +1,3 @@
-using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
@@ -7,7 +6,7 @@ namespace Gauge
 {
     public class GaugeView : MonoBehaviour
     {
-        [SerializeField] private TextMeshProUGUI _text;
+        [SerializeField] private Text _text;
 
         /// <summary>
         /// 初期化
