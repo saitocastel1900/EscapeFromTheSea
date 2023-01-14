@@ -686,8 +686,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 1286339039}
   _view: {fileID: 1286339041}
-  _scene:
-    m_AssetGUID: d6212c30010b773448a7be07940dfefb
+  _inGameScene:
+    m_AssetGUID: 77c04e4f1d2dcdf4a93b6ddfb17e057d
     m_SubObjectName: 
     m_SubObjectType: 
     m_EditorAssetChanged: 0

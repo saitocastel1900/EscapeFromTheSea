@@ -1,3 +1,4 @@
+using System;
 using UniRx;
 using UnityEngine;
 using Commons.Const;
@@ -12,6 +13,8 @@ namespace Description
         public IReactiveProperty<int> SlideCurrentNumProp => _slideCurrentNumProp;
         public int SlideCurrentNum => _slideCurrentNumProp.Value;
         private IntReactiveProperty _slideCurrentNumProp;
+
+        public event Action OnCallback;
 
         /// <summary>
         /// 

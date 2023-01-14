@@ -1,5 +1,7 @@
+using Commons.Interface;
 using UniRx;
 using UnityEngine;
+using Zenject;
 
 namespace Result
 {
@@ -12,6 +14,9 @@ namespace Result
         public bool IsClear => _isClearProp.Value;
         private BoolReactiveProperty _isClearProp;
 
+        [Inject]
+        private IDataHolder _data;
+        
         /// <summary>
         /// 
         /// </summary>
@@ -19,7 +24,7 @@ namespace Result
         {
             //TODO:シングルトンでGetしたものを入れる
             //ここでGetする
-            _isClearProp = new BoolReactiveProperty(false);
+            _isClearProp = new BoolReactiveProperty(_data.Get());
         }
     }
 }

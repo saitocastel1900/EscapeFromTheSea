@@ -3,6 +3,9 @@ using UnityEngine;
 
 namespace Description
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class DescriptionPresenter : MonoBehaviour
     {
         [SerializeField] private DescriptionModel _model;
@@ -16,12 +19,18 @@ namespace Description
             SetEvent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Initialize()
         {
             _model.Initialize();
             _view.Initialize();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Bind()
         {
             _model.SlideCurrentNumProp
@@ -30,6 +39,9 @@ namespace Description
                 .AddTo(this.gameObject);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void SetEvent()
         {
             _view.OnClickNextButton()
@@ -39,6 +51,22 @@ namespace Description
             _view.OnClickBackButton()
                 .Subscribe(_=>_model.SubSlideNum())
                 .AddTo(this.gameObject);
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Show()
+        {
+            _view.Show();
+        }
+        
+        /// <summary>
+        /// 
+        /// </summary>
+        public void Hide()
+        {
+            _view.Hide();
         }
     }
 }

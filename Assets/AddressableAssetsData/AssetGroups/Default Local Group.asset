@@ -21,6 +21,18 @@ MonoBehaviour:
     m_Address: Assets/Scenes/ResultScene.unity
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: 77c04e4f1d2dcdf4a93b6ddfb17e057d
+    m_Address: Assets/Scenes/InGame.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: aa75d2ff426cb004ca142a928024ae3d
+    m_Address: Assets/Scenes/TitleScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: 9fc0d4010bbf28b4594072e72b8655ab
+    m_Address: Assets/Scenes/SampleScene.unity
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 985a4e89f8bf2b448a4022618ed09d6c, type: 2}
   m_SchemaSet:
