@@ -1,9 +1,7 @@
-using System;
-using Commons.Utility;
 using Description;
 using UniRx;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
+using UnityEngine.SceneManagement;
 
 namespace Result
 {
@@ -13,8 +11,8 @@ namespace Result
         [SerializeField] private ResultView _view;
         [SerializeField] private ResultModel _model;
         
-        [SerializeField] private AssetReference _titleScene;
-        [SerializeField] private AssetReference _inGameScene;
+        [SerializeField] private string _titleScene;
+        [SerializeField] private string _inGameScene;
         
         
         // Start is called before the first frame update
@@ -41,11 +39,11 @@ namespace Result
         private void SetEvent()
         {
             _view.OnClickTitleButton()
-                .Subscribe(_=>SceneTransition.LoadScene(_titleScene))
+                .Subscribe(_=>SceneManager.LoadScene(_titleScene))
                 .AddTo(this.gameObject);
             
             _view.OnClickPlayButton()
-                .Subscribe(_=>SceneTransition.LoadScene(_inGameScene))
+                .Subscribe(_=>SceneManager.LoadScene(_inGameScene))
                 .AddTo(this.gameObject);
 
             _view.OnClickDescriptionButton()
