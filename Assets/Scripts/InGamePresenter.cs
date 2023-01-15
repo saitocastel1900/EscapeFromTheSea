@@ -1,10 +1,12 @@
 using Commons.Enum;
+using Commons.Interface;
 using Gauge;
 using Player;
 using RipCurrent;
 using Score;
 using UniRx;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Zenject;
 
 namespace InGame
@@ -16,11 +18,14 @@ namespace InGame
 
         [SerializeField] private RipCurrentPresenter _ripCurrent;
         [SerializeField] private PlayerPresenter _player;
-        [SerializeField] private ScorePresenter _score;
+        [SerializeField] private TimerPresenter _timer;
+        [Inject] private GaugePresenter _gauge;
+
+        [SerializeField] private string _resultScene;
         
         [Inject]
-        private GaugePresenter _gauge;
-
+        private IDataHolder _data;
+        
         private void Start()
         {
             Initialized();
@@ -31,9 +36,12 @@ namespace InGame
         private void Update()
         {
             _player.ManualUpdate(Time.deltaTime);
-            _score.ManualUpdate(Time.deltaTime);
+            _timer.ManualUpdate(Time.deltaTime);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Initialized()
         {
             _view.Initialized();
@@ -41,9 +49,12 @@ namespace InGame
             _player.Initialized();
             _gauge.Initialized();
          //   _ripCurrent.Initialized();
-            _score.Initialized();
+            _timer.Initialized();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void Bind()
         {
             _player.Bind();
@@ -55,20 +66,42 @@ namespace InGame
             _model.StatePrp
                 .DistinctUntilChanged().Subscribe(OnStateChanged).AddTo(this);
             
-            _score.Bind();
+            _timer.Bind();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void SetEvent()
         {
+            _timer.OnTimeOverBack += () => GameFinish(true);
+            _player.OnHpOverBack += () => GameFinish(false);
+            
+            _timer.SetEvent();
+            _player.SetEvent();
             //_gauge.SetEvent();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
         private void OnStateChanged(InGameEnum.State state)
         {
             switch (state)
             {
-                
+               
             }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        private void GameFinish(bool value)
+        {
+            
+            _data.Set(value);
+            Debug.Log(_data.Get());
+            SceneManager.LoadScene(_resultScene);
         }
     }
 }

@@ -20,7 +20,7 @@ namespace InGame
         /// Enumを書き換える
         /// </summary>
         /// <param name="state"></param>
-        public void UpdateState(InGameEnum.State state)
+        public void SetState(InGameEnum.State state)
         {
             _stateProp.Value = state;
         }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Score
 {
-    public class ScoreView : MonoBehaviour
+    public class TimerView : MonoBehaviour
     {
         [SerializeField] private Text _text;
         
