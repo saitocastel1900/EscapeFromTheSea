@@ -686,11 +686,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _model: {fileID: 1286339039}
   _view: {fileID: 1286339041}
-  _inGameScene:
-    m_AssetGUID: 77c04e4f1d2dcdf4a93b6ddfb17e057d
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  _inGameScene: InGameScene
 --- !u!114 &1286339041
 MonoBehaviour:
   m_ObjectHideFlags: 0

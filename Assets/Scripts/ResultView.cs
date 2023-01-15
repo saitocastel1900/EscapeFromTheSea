@@ -25,6 +25,9 @@ namespace Result
         /// </summary>
         public void Initialize()
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            
             SetResult(false);
         }
 

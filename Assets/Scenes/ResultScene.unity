@@ -514,16 +514,8 @@ MonoBehaviour:
   _descriptionPresenter: {fileID: 1420715034}
   _view: {fileID: 1145273229}
   _model: {fileID: 1145273227}
-  _titleScene:
-    m_AssetGUID: aa75d2ff426cb004ca142a928024ae3d
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
-  _inGameScene:
-    m_AssetGUID: 77c04e4f1d2dcdf4a93b6ddfb17e057d
-    m_SubObjectName: 
-    m_SubObjectType: 
-    m_EditorAssetChanged: 0
+  _titleScene: TitleScene
+  _inGameScene: InGameScene
 --- !u!114 &1145273229
 MonoBehaviour:
   m_ObjectHideFlags: 0

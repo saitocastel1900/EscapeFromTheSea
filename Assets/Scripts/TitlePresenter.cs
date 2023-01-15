@@ -1,8 +1,6 @@
-using Commons.Utility;
 using UniRx;
 using UnityEngine;
-using UnityEngine.AddressableAssets;
-using UnityEngine.Serialization;
+using UnityEngine.SceneManagement;
 
 namespace Title
 {
@@ -14,7 +12,7 @@ namespace Title
         [SerializeField] private TitleModel _model;
         [SerializeField] private TitleView _view;
 
-        [SerializeField] private AssetReference _inGameScene;
+        [SerializeField] private string _inGameScene;
 
         private void Start()
         {
@@ -39,7 +37,7 @@ namespace Title
             _model.IsPushProp
                 .Where(_ => _model.IsPush)
                 .DistinctUntilChanged()
-                .Subscribe(_ => SceneTransition.LoadScene(_inGameScene)).AddTo(this);
+                .Subscribe(_ => SceneManager.LoadScene(_inGameScene)).AddTo(this);
         }
 
         /// <summary>
