@@ -1,19 +1,29 @@
 using UniRx;
 using UnityEngine;
+using System;
 
 namespace Player
 {
     public class PlayerModel
     {
-        private IntReactiveProperty _hpProp;
-        public IReactiveProperty<int> HpProp => _hpProp;
-        private int HP => _hpProp.Value;
+        /// <summary>
+        /// 
+        /// </summary>
+        public event Action OnHpOverBack;
         
-        private Vector3 _pos;
-        public Vector3 Pos => _pos;
+        /// <summary>
+        /// 
+        /// </summary>
+        public IReactiveProperty<int> HpProp => _hpProp;
 
-        private Quaternion _rotation;
+        private IntReactiveProperty _hpProp;
+        private int HP => _hpProp.Value;
+
+        public Vector3 Pos => _pos;
+        private Vector3 _pos;
+
         public Quaternion Rotation => _rotation;
+        private Quaternion _rotation;
 
         private Quaternion _targetRotation;
         private Vector3 _direction;
@@ -91,6 +101,11 @@ namespace Player
             var value = HP + 1;
             Debug.Log("Modelの値" + value);
             _hpProp.Value = Mathf.Clamp(value, 0, 10);
+
+            if (_hpProp.Value>=1)
+            {
+                OnHpOverBack?.Invoke();
+            }
         }
     }
 }

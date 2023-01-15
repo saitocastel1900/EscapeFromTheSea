@@ -1,19 +1,25 @@
+using System;
 using UniRx;
 using UnityEngine;
 
 namespace Score
 {
-    public class ScorePresenter : MonoBehaviour
+    public class TimerPresenter : MonoBehaviour
     {
-        private ScoreModel _model;
-        [SerializeField] private ScoreView _view;
+        /// <summary>
+        /// 
+        /// </summary>
+        public event Action OnTimeOverBack;
+        
+        private TimerModel _model;
+        [SerializeField] private TimerView _view;
 
         /// <summary>
         /// 初期化
         /// </summary>
         public void Initialized()
         {
-            _model = new ScoreModel();
+            _model = new TimerModel();
             _view.Initialize();
         }
 
@@ -25,6 +31,14 @@ namespace Score
 
             // スコアが変更された表示も変更
             //_model.OnSetScore += _view.SetScore;
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public void SetEvent()
+        {
+            _model.OnCallback += () => OnTimeOverBack?.Invoke();
         }
 
         /// <summary>

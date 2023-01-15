@@ -14,7 +14,6 @@ namespace Result
         [SerializeField] private string _titleScene;
         [SerializeField] private string _inGameScene;
         
-        
         // Start is called before the first frame update
         private void Start()
         {

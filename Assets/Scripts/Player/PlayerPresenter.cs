@@ -1,5 +1,5 @@
+using System;
 using Commons.Interface;
-using UniRx;
 using UnityEngine;
 using Zenject;
 
@@ -14,6 +14,11 @@ namespace Player
         [SerializeField] private PlayerView _view;
 
         /// <summary>
+        /// 
+        /// </summary>
+        public event Action OnHpOverBack;
+        
+        /// <summary>
         /// 初期化
         /// </summary>
         public void Initialized()
@@ -25,6 +30,11 @@ namespace Player
         public void Bind()
         {
             
+        }
+
+        public void SetEvent()
+        {
+            _model.OnHpOverBack += () => OnHpOverBack?.Invoke();
         }
 
         public void ManualUpdate(float deltaTime)
