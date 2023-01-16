@@ -17,7 +17,7 @@ namespace Score
         
         public TimerModel()
         {
-            _timeProp = new FloatReactiveProperty(10);
+            _timeProp = new FloatReactiveProperty(30);
         }
 
         public void ManualUpdate(float deltaTime)

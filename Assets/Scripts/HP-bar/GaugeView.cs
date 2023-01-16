@@ -22,8 +22,9 @@ namespace Gauge
         /// <param name="value"></param>
         public void UpdateText(int value)
         {
+            //BUG:ここは直す（データの計算を扱ってしまっているため）
             Debug.Log("テキスト数値："+value);
-            _text.text = value.ToString() + "/10";
+            _text.text = (10-value).ToString() + "/10";
         }
 
         #region GaugeAnimaion
