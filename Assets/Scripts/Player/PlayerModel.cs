@@ -102,7 +102,7 @@ namespace Player
             Debug.Log("Modelの値" + value);
             _hpProp.Value = Mathf.Clamp(value, 0, 10);
 
-            if (_hpProp.Value>=1)
+            if (_hpProp.Value>=10)
             {
                 OnHpOverBack?.Invoke();
             }

@@ -48,7 +48,7 @@ namespace InGame
             _model.Initialized();
             _player.Initialized();
             _gauge.Initialized();
-         //   _ripCurrent.Initialized();
+            _ripCurrent.Initialized();
             _timer.Initialized();
         }
 
@@ -59,7 +59,7 @@ namespace InGame
         {
             _player.Bind();
             
-           // _ripCurrent.OnCollisionEnter();
+            _ripCurrent.Bind();
 
             _gauge.Bind();
             
@@ -75,7 +75,9 @@ namespace InGame
         private void SetEvent()
         {
             _timer.OnTimeOverBack += () => GameFinish(true);
-            _player.OnHpOverBack += () => GameFinish(false);
+            _player.OnAnimationCallBack += () => GameFinish(false);
+            _ripCurrent.OnSeaEnterBack += () => _player.Swim();
+            _ripCurrent.OnSeaExitBack += () => _player.Walk();
             
             _timer.SetEvent();
             _player.SetEvent();
@@ -100,7 +102,6 @@ namespace InGame
         {
             
             _data.Set(value);
-            Debug.Log(_data.Get());
             SceneManager.LoadScene(_resultScene);
         }
     }
