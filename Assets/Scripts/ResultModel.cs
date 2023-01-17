@@ -22,9 +22,6 @@ namespace Result
         /// </summary>
         public void Initialize()
         {
-            Debug.Log(_data.Get());
-            //TODO:シングルトンでGetしたものを入れる
-            //ここでGetする
             _isClearProp = new BoolReactiveProperty(_data.Get());
         }
     }
