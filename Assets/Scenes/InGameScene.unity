@@ -788,7 +788,7 @@ GameObject:
   - component: {fileID: 130504335}
   - component: {fileID: 130504334}
   m_Layer: 0
-  m_Name: Ground (1)
+  m_Name: Ground_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2516,7 +2516,7 @@ GameObject:
   - component: {fileID: 706578864}
   - component: {fileID: 706578863}
   m_Layer: 0
-  m_Name: Ground (2)
+  m_Name: Ground_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4360,7 +4360,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399095622}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -20}
+  m_LocalPosition: {x: 0, y: -0.27, z: -20}
   m_LocalScale: {x: 2, y: 1, z: 2}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4401,7 +4401,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fa5cfc2c615f5b340b00f49b5dfc6e37, type: 2}
+  - {fileID: 2100000, guid: 7e375dfe57056b14daf6caad63541bf3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
