@@ -8,6 +8,6 @@ namespace Commons.Interface
     /// </summary>
     public interface IPushable
     {
-        public void Push(Action OnCallBack);
+        public void Push(Action OnCallBack=null);
     }
 }

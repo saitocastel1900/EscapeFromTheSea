@@ -4,6 +4,9 @@ using System;
 
 namespace Player
 {
+    /// <summary>
+    ///
+    /// </summary>
     public class PlayerModel
     {
         /// <summary>
