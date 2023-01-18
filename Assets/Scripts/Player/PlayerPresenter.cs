@@ -89,7 +89,7 @@ namespace Player
         /// </summary>
         public void Push(Action OnCallBack)
         {
-            _rigidbody.AddForce(new Vector3(0, 0, -20));
+            _rigidbody.AddForce(new Vector3(0, 0, -30));
         }
     }
 }

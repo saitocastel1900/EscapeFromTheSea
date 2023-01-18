@@ -47,7 +47,7 @@ namespace RipCurrent
                 .OnTriggerStayAsObservable()
                 .Where(target => target.gameObject.TryGetComponent<IDamagable>(out var t))
                 //ここは変えた方が良い
-                .Buffer(60)
+                .Buffer(100)
                 .Subscribe(target=>
                 {
                     if (target[0]!=null)
