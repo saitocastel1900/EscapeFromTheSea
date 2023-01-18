@@ -39,16 +39,30 @@ namespace RipCurrent
             this.gameObject.OnTriggerEnterAsObservable()
                 .Subscribe(target=>
                 {
-                    var hit = target.gameObject.GetComponent<IDamagable>();
-                    hit?.Damage();
                     OnSeaEnterBack?.Invoke();
                 }).AddTo(this);
-
+            
             //
-            this.gameObject.OnTriggerStayAsObservable()
+            this.gameObject
+                .OnTriggerStayAsObservable()
+                .Where(target => target.gameObject.TryGetComponent<IDamagable>(out var t))
+                //ここは変えた方が良い
+                .Buffer(60)
                 .Subscribe(target=>
                 {
-                   
+                    if (target[0]!=null)
+                    {
+                        var hit = target[0]?.gameObject?.GetComponent<IDamagable>();
+                        hit?.Damage();
+                    }
+                }).AddTo(this);
+            
+            _view.OnTriggerEnterStay()
+                .Where(target => target.gameObject.TryGetComponent<IPushable>(out var t))
+                .Subscribe(target =>
+                {
+                    var hit = target.gameObject.GetComponent<IPushable>();
+                    hit?.Push();
                 }).AddTo(this);
             
             //
