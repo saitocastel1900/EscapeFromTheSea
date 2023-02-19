@@ -8,7 +8,7 @@ namespace Gauge
     {
         public IReadOnlyReactiveProperty<int> Value => _value;
         private IntReactiveProperty _value;
-
+        
         public event Action OnCallback;
 
         /// <summary>

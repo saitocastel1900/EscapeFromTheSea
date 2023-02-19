@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace Commons.Interface
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public interface IPushable
     {
+        /// <summary>
+        /// 押す
+        /// </summary>
         public void Push(Action OnCallBack=null);
     }
 }

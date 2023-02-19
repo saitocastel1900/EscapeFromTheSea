@@ -7,28 +7,25 @@ using Zenject;
 
 namespace Player
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public class PlayerView : MonoBehaviour
     {
         /// <summary>
-        /// 
+        /// 入力装置
         /// </summary>
         [Inject] private IInputMoveProvider _input;
         
         /// <summary>
-        /// 
+        /// プレイヤーのAnimator
         /// </summary>
         private Animator _animator;
         
         /// <summary>
-        /// 
+        /// プレイヤーの回転スピード
         /// </summary>
         private float _rotationSpeed;
 
         /// <summary>
-        /// 
+        /// 初期化
         /// </summary>
         public void Initialized()
         {
@@ -36,19 +33,22 @@ namespace Player
             _rotationSpeed = 0;
         }
 
+        /// <summary>
+        /// アニメーションのObservableステートを返す
+        /// </summary>
         public IObservable<ObservableStateMachineTrigger.OnStateInfo> OnStateExit()
         {
-           return 
-               _animator.GetBehaviour<ObservableStateMachineTrigger>().OnStateUpdateAsObservable();
+           return _animator.GetBehaviour<ObservableStateMachineTrigger>().OnStateUpdateAsObservable();
         }
 
         /// <summary>
-        /// 
+        /// 進行方向を返す
         /// </summary>
-        public Vector3 InputMove()
+        public Vector3 GetDirection()
         {
             var vector = Vector3.zero;
 
+            //入力がキーに対応した方向を返す
             if (_input.InputAhead() || _input.InputBack() || _input.InputLeft() || _input.InputRight())
             {
                 if (_input.InputAhead())
@@ -60,15 +60,14 @@ namespace Player
                 if (_input.InputRight())
                     vector += Vector3.right;
             }
-
-            Debug.Log(vector.normalized);
+            
             return vector.normalized;
         }
         
         /// <summary>
-        /// 
+        /// 歩行スピードを設定
         /// </summary>
-        public int InputSpeed()
+        public int SetSpeed()
         {
             if (_input.InputSpeedUp())
             {
@@ -81,7 +80,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// 手動Update
         /// </summary>
         public void ManualUpdate(Vector3 velocity, Quaternion targetRotation, float deltaTime)
         {
@@ -90,7 +89,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// 回転角度を設定
         /// </summary>
         private void SetRotation(Quaternion targetRotation, float deltaTime)
         {
@@ -99,7 +98,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// 位置を設定
         /// </summary>
         private void SetPos(Vector3 velocity, float deltaTime)
         {
@@ -107,7 +106,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// プレイヤーのアニメーションを歩行モーションに設定する
         /// </summary>
         public void SetWalk()
         {
@@ -115,7 +114,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// プレイヤーのアニメーションを水泳モーションに設定する
         /// </summary>
         public void SetSwim()
         {
@@ -123,7 +122,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// プレイヤーのアニメーションを死亡モーションに設定する
         /// </summary>
         public void SetDie()
         {

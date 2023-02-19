@@ -2,36 +2,33 @@ using Commons.Interface;
 
 namespace InGame
 {
-    //BUG:クラス名のIngameDataは抽象的すぎるので、変更する
-    
     /// <summary>
-    /// 
+    /// InGameのデータを管理するクラス
     /// </summary>
     public class InGameData : IDataHolder
     { 
+        //ゲームをクリアしたかどうか
         private bool _isClear;
 
         /// <summary>
-        /// 
+        /// コンストラクタ
         /// </summary>
-        public InGameData(bool isClear=true)
+        public InGameData(bool isClear=false)
         {
             _isClear = isClear;
         }
 
         /// <summary>
-        /// 
+        /// クリアフラグを設定する
         /// </summary>
-        /// <param name="isClear"></param>
         public void Set(bool isClear)
         {
             _isClear = isClear;
         }
 
         /// <summary>
-        /// 
+        /// クリアフラグを返す
         /// </summary>
-        /// <returns></returns>
         public bool Get()
         {
             return _isClear;

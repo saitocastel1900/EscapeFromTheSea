@@ -6,6 +6,9 @@ namespace Gauge
 {
     public class GaugeView : MonoBehaviour
     {
+        /// <summary>
+        /// HpのカウンターText
+        /// </summary>
         [SerializeField] private Text _text;
 
         /// <summary>
@@ -13,7 +16,7 @@ namespace Gauge
         /// </summary>
         public void Initialized()
         {
-           // UpdateText(0);
+            UpdateText(0);
         }
 
         /// <summary>
@@ -22,16 +25,24 @@ namespace Gauge
         /// <param name="value"></param>
         public void UpdateText(int value)
         {
-            //BUG:ここは直す（データの計算を扱ってしまっているため）
-            Debug.Log("テキスト数値："+value);
             _text.text = (10-value).ToString() + "/10";
         }
 
         #region GaugeAnimaion
 
+        /// <summary>
+        /// 体力バーのImage
+        /// </summary>
         [SerializeField] private Image _gaugeImage;
+        
+        /// <summary>
+        /// 体力バーの充填率
+        /// </summary>
         [SerializeField] private float _gaugeValue;
 
+        /// <summary>
+        /// 体力バーの充填率
+        /// </summary>
         public float GaugeValue
         {
             get => _gaugeValue;
@@ -41,8 +52,16 @@ namespace Gauge
             }
         }
         
+        /// <summary>
+        /// アニメーションの継続期間
+        /// </summary>
         [SerializeField] private float duration = 0.2f;
+        
         private Tweener _tweener=null;
+        
+        /// <summary>
+        /// 体力バーのアニメーション
+        /// </summary>
         public void GaugeAnimation()
         {
             if (_tweener != null)
@@ -51,8 +70,8 @@ namespace Gauge
                 _tweener = null;
             }
 
+            //充填率を設定
             _tweener = _gaugeImage.DOFillAmount(GaugeValue, duration)
-                .OnComplete(() => Debug.Log("アニメーション修了"))
                 .SetEase(Ease.OutCubic);
         }
         

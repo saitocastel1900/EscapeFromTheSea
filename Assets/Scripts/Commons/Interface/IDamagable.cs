@@ -1,11 +1,11 @@
 
 namespace Commons.Interface
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public interface IDamagable
     {
+        /// <summary>
+        /// 損害を与える
+        /// </summary>
         public void Damage();
     }
 }

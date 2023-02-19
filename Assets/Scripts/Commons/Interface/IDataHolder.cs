@@ -1,14 +1,16 @@
 
-
 namespace Commons.Interface
 {
-    /// <summary>
-    /// 
-    /// </summary>
     public interface IDataHolder
     {
+        /// <summary>
+        /// 設定
+        /// </summary>
         public void Set(bool value);
 
+        /// <summary>
+        /// 入手
+        /// </summary>
         public bool Get();
     }
 }

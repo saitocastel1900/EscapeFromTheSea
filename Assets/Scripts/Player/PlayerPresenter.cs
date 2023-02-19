@@ -6,21 +6,22 @@ using Zenject;
 
 namespace Player
 {
-    //TODO:コメントを書こう
-    //TODO:移動を単純な物ではなく、浮力や水力、波の影響を受けたリアルな移動方法に
-    //変更する
-    /// <summary>
-    /// 
-    /// </summary>
     public class PlayerPresenter : MonoBehaviour, IDamagable , IPushable
     {
+        /// <summary>
+        /// Model
+        /// </summary>
         [Inject] private PlayerModel _model;
+        
+        /// <summary>
+        /// View
+        /// </summary>
         [SerializeField] private PlayerView _view;
-
+        
         private Rigidbody _rigidbody;
         
         /// <summary>
-        /// 
+        /// アニメーション終了時に呼ばれる
         /// </summary>
         public event Action OnAnimationCallBack;
 
@@ -33,7 +34,9 @@ namespace Player
             TryGetComponent(out _rigidbody);
         }
 
-        //もっとも良い方法があるはず
+        /// <summary>
+        /// Bind
+        /// </summary>
         public void Bind()
         {
             _view.OnStateExit()
@@ -43,7 +46,7 @@ namespace Player
         }
 
         /// <summary>
-        ///       
+        /// イベント設定      
         /// </summary>
         public void SetEvent()
         {
@@ -51,17 +54,17 @@ namespace Player
         }
 
         /// <summary>
-        /// 
-        /// </su
+        /// 手動Update
+        /// <summary>
         public void ManualUpdate(float deltaTime)
         {
-            _model.ManualUpdate(_view.InputSpeed(), _view.InputMove());
+            _model.UpdateMove(_view.SetSpeed(), _view.GetDirection());
             _view.ManualUpdate(_model.Pos, _model.Rotation, Time.deltaTime);
         }
 
 
         /// <summary>
-        /// 
+        /// 泳ぐ
         /// </summary>
         public void Swim()
         {
@@ -69,7 +72,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// 歩く
         /// </summary>
         public void Walk()
         {
@@ -77,7 +80,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// 負傷
         /// </summary>
         public void Damage()
         {
@@ -85,7 +88,7 @@ namespace Player
         }
 
         /// <summary>
-        /// 
+        /// 押される
         /// </summary>
         public void Push(Action OnCallBack)
         {

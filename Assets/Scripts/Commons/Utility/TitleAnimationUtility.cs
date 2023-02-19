@@ -1,5 +1,3 @@
-using System;
-using Cysharp.Threading.Tasks;
 using UnityEngine.UI;
 using DG.Tweening;
 using UniRx;
@@ -9,12 +7,18 @@ namespace Commons.Utility
 {
     public static class TitleAnimationUtility
     {
+        /// <summary>
+        /// パネルFadeOutのtween
+        /// </summary>
         public static Tween PanelFadeOutTween(Image panel)
         {
            return panel.DOFade(0f, 0.5f)
                .SetEase(Ease.Linear).OnComplete(() => { Debug.Log("フェードアウトが完了しました"); });
         }
         
+        /// <summary>
+        /// シーン遷移演出のTween
+        /// </summary>
         public static Tween TransitionEffectTween(Image panel,Subject<Unit> OnCallback)
         {
             return panel.DOFade(1.0f, 0.2f)
@@ -25,6 +29,9 @@ namespace Commons.Utility
                 });
         }
 
+        /// <summary>
+        /// FadeLoopのTween
+        /// </summary>
         public static Tween FadeImageLoopTween(Image image)
         {
             return image.DOFade(0.0f, 1f)

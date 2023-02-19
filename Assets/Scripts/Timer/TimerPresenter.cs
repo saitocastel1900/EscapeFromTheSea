@@ -7,11 +7,18 @@ namespace Score
     public class TimerPresenter : MonoBehaviour
     {
         /// <summary>
-        /// 
+        /// 時間がゼロになったら呼ばれる
         /// </summary>
         public event Action OnTimeOverBack;
         
+        /// <summary>
+        /// Model
+        /// </summary>
         private TimerModel _model;
+        
+        /// <summary>
+        /// View
+        /// </summary>
         [SerializeField] private TimerView _view;
 
         /// <summary>
@@ -23,22 +30,23 @@ namespace Score
             _view.Initialize();
         }
 
+        /// <summary>
+        /// Bind
+        /// </summary>
         public void Bind()
         {
+            //タイマーが変更されたら、表記もUpdateする
             _model.TimeProp
                 .DistinctUntilChanged()
                 .Subscribe(time=>_view.UpdateText(time)).AddTo(this);
-
-            // スコアが変更された表示も変更
-            //_model.OnSetScore += _view.SetScore;
         }
 
         /// <summary>
-        /// 
+        /// イベントを設定
         /// </summary>
         public void SetEvent()
         {
-            _model.OnCallback += () => OnTimeOverBack?.Invoke();
+            _model.OnTimeOverBack += () => OnTimeOverBack?.Invoke();
         }
 
         /// <summary>
